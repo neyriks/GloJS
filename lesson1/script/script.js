@@ -5,5 +5,5 @@ let deposit;
 let mission;
 let period;
 
-alert ('Hello world!');
-console.log ('Hi world!');
+alert('Hello world!');
+console.log('Hi world!');
