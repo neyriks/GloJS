@@ -7,9 +7,9 @@ let money = prompt('Ваш месячный доход?'),
     mission = 60000,
     period = 6,
     budgetDay = money  / 30,
-    expenses1 = confirm('Ведёте обязательную статью расходов?'),
+    expenses1 = prompt('Введите обязательную статью расходов?'),
     amount1 = prompt('Во сколько это обойдется?'),
-    expenses2 = confirm('Ведёте обязательную статью расходов?'),
+    expenses2 = prompt('Введите обязательную статью расходов?'),
     amount2 = prompt('Во сколько это обойдется?'),
     budgetMonth = money - amount1 - amount2;
 
