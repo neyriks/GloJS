@@ -1,20 +1,17 @@
 'use strict';
 
-let money = prompt('Ваш месячный доход?'),
+let money = +prompt('Ваш месячный доход?'),
     income = "фриланс",
     addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'),
     deposit = confirm('Есть ли у вас депозит в банке?'),
     mission = 60000,
     period = 6,
     expenses1 = prompt('Введите обязательную статью расходов?'),
-    amount1 = prompt('Во сколько это обойдется?'),
+    amount1 = +prompt('Во сколько это обойдется?'),
     expenses2 = prompt('Введите обязательную статью расходов?'),
-    amount2 = prompt('Во сколько это обойдется?'),
+    amount2 = +prompt('Во сколько это обойдется?'),
     accumulatedMonth,
     budgetDay;
-
-
-
 
 // Функции
 // Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц
@@ -31,12 +28,14 @@ getAccumulatedMonth();
 
 //  Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
 accumulatedMonth = getAccumulatedMonth();
+
 // Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, 
 // зная результат месячного накопления (accumulatedMonth) и возвращает результат
 const getTargetMonth = function() {
     return mission / accumulatedMonth;
 };
 getTargetMonth();
+
 // budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
  budgetDay = accumulatedMonth  / 30;
 // Конструкция if
@@ -70,5 +69,5 @@ console.log ('Период равен ' + period + ' месяцев и Цель 
 console.log (addExpenses.toLowerCase().split(', '));
 console.log(budgetDay);
 console.log('Ваш бюджет на месяц:' + accumulatedMonth);
-console.log('Цель будет достигнута за:' + getTargetMonth());
+console.log('Цель будет достигнута за:' + Math.ceil(getTargetMonth()));
 console.log('Бюджет на день:' + Math.floor(budgetDay));
