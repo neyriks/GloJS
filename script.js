@@ -32,10 +32,10 @@ getAccumulatedMonth(money, a);
 let accumulatedMonth = getAccumulatedMonth(money, a);
 // Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, 
 // зная результат месячного накопления (accumulatedMonth) и возвращает результат
-const getTargetMonth = function(period, accumulatedMonth) {
-    return accumulatedMonth / period;
+const getTargetMonth = function(mission, accumulatedMonth) {
+    return mission / accumulatedMonth;
 };
-getTargetMonth(period, accumulatedMonth);
+getTargetMonth(mission, accumulatedMonth);
 // budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
 let budgetDay = accumulatedMonth  / 30;
 
