@@ -9,27 +9,28 @@ let money = prompt('Ваш месячный доход?'),
     expenses1 = prompt('Введите обязательную статью расходов?'),
     amount1 = prompt('Во сколько это обойдется?'),
     expenses2 = prompt('Введите обязательную статью расходов?'),
-    amount2 = prompt('Во сколько это обойдется?');
+    amount2 = prompt('Во сколько это обойдется?'),
+    accumulatedMonth,
+    budgetDay;
 
 
 
 
 // Функции
 // Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц
-let a;
 const getExpensesMonth = function (amount1, amount2) {   
-    a = amount1 + amount2;
-    return a;
+    return amount1 + amount2;
 };
-getExpensesMonth(amount1, amount2);
+getExpensesMonth();
+
 // Объявить функцию getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы)
 const getAccumulatedMonth = function() {
-    return money - a;
+    return money - getExpensesMonth(amount1, amount2);
 };
 getAccumulatedMonth();
 
 //  Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
-let accumulatedMonth = getAccumulatedMonth();
+accumulatedMonth = getAccumulatedMonth();
 // Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, 
 // зная результат месячного накопления (accumulatedMonth) и возвращает результат
 const getTargetMonth = function() {
@@ -37,9 +38,7 @@ const getTargetMonth = function() {
 };
 getTargetMonth();
 // budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
-let budgetDay = accumulatedMonth  / 30;
-
-
+ budgetDay = accumulatedMonth  / 30;
 // Конструкция if
 let getStatusIncome = function() {
     if (budgetDay >= 1200) {
@@ -52,7 +51,7 @@ let getStatusIncome = function() {
         return ('Что-то пошло не так');
     }
 };
-console.log(getStatusIncome());
+getStatusIncome();
 
 
 
