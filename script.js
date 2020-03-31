@@ -26,18 +26,18 @@ getExpensesMonth(amount1, amount2);
 const getAccumulatedMonth = function(money, a) {
     return money - a;
 };
-getAccumulatedMonth(getAccumulatedMonth);
+getAccumulatedMonth(money, a);
 
 //  Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth 
-let accumulatedMonth = getAccumulatedMonth;
+let accumulatedMonth = getAccumulatedMonth(money, a);
 // Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, 
 // зная результат месячного накопления (accumulatedMonth) и возвращает результат
-const getTargetMonth = function(money, accumulatedMonth) {
-    return money - accumulatedMonth;
+const getTargetMonth = function(period, accumulatedMonth) {
+    return accumulatedMonth / period;
 };
-getTargetMonth(money, accumulatedMonth);
+getTargetMonth(period, accumulatedMonth);
 // budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
-let budgetDay = getAccumulatedMonth  / 30;
+let budgetDay = accumulatedMonth  / 30;
 
 
 // Конструкция if
@@ -70,6 +70,6 @@ console.log (addExpenses.length);
 console.log ('Период равен ' + period + ' месяцев и Цель заработать: '+ mission + ' рублей');
 console.log (addExpenses.toLowerCase().split(', '));
 console.log(budgetDay);
-console.log('Ваш бюджет на месяц:' + getAccumulatedMonth);
-console.log('Цель будет достигнута за:' + getTargetMonth(money, accumulatedMonth));
+console.log('Ваш бюджет на месяц:' + accumulatedMonth);
+console.log('Цель будет достигнута за:' + getTargetMonth());
 console.log('Бюджет на день:' + Math.floor(accumulatedMonth / 30));
