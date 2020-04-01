@@ -43,6 +43,7 @@ const getExpensesMonth = function(amount1, amount2) {
         sum += +prompt('Во сколько это обойдется?');
         i++;
     }
+    console.log(sum);
     return sum;
 };
 let expensesAmount = getExpensesMonth();
