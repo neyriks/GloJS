@@ -41,7 +41,13 @@ const getExpensesMonth = function(amount1, amount2) {
     while(i < 2) {
         expenses1 = prompt('Введите обязательную статью расходов?');
         sum += +prompt('Во сколько это обойдется?');
+<<<<<<< HEAD
         i++;
+=======
+        expenses2 = prompt('Введите обязательную статью расходов?');
+        sum += +prompt('Во сколько это обойдется?');
+        return sum;
+>>>>>>> e20356eb6595eaf463086a5e20aa194e0880fb0a
     }
     return sum;
 };
