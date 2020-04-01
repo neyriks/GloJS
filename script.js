@@ -20,18 +20,31 @@ start = function(){
 };
 start();
 
-const getExpensesMonth = function (amount1, amount2) {  
-    let sum = 0;
-    for(let i = 0; i < 2; i++) {
-        if(i === 0) {
-            expenses1 = prompt('Введите обязательную статью расходов?');
-        } else if(i === 1) {
-            expenses1 = prompt('Введите обязательную статью расходов?');
-        }
+// const getExpensesMonth = function (amount1, amount2) {  
+//     let sum = 0;
+//     for(let i = 0; i < 2; i++) {
+//         if(i === 0) {
+//             expenses1 = prompt('Введите обязательную статью расходов?');
+//         } else if(i === 1) {
+//             expenses1 = prompt('Введите обязательную статью расходов?');
+//         }
+//         sum += +prompt('Во сколько это обойдется?');
+//     } 
+//     console.log(sum);
+//     return sum;
+// };
+ 
+
+const getExpensesMonth = function(amount1, amount2) {
+    let sum = 0,
+        i = 0;
+    while(i < 2) {
+        expenses1 = prompt('Введите обязательную статью расходов?');
         sum += +prompt('Во сколько это обойдется?');
-    } 
-    console.log(sum);
-    return sum;
+        expenses2 = prompt('Введите обязательную статью расходов?');
+        sum += +prompt('Во сколько это обойдется?');
+        return i, sum;
+    }
 };
 let expensesAmount = getExpensesMonth();
 
