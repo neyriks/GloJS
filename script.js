@@ -40,7 +40,6 @@ let appData = {
             }
     
             let count = prompt('Во сколько это обойдется?');
-    
             while(!isNumber(count)) {
                 count = prompt('Во сколько это обойдется?');
             }
@@ -71,15 +70,13 @@ let appData = {
         }
     }
 };
-// let expensesAmount = getExpensesMonth();
-// getAccumulatedMonth();
+appData.getAccumulatedMonth();
+// appData.accumulatedMonth = appData.getAccumulatedMonth();
 
-// accumulatedMonth = getAccumulatedMonth();
+appData.getTargetMonth();
 
-// getTargetMonth();
-
-//  let budgetDay = accumulatedMonth  / 30;
-// getStatusIncome();
+// appData.budgetDay = appData.accumulatedMonth  / 30;
+appData.getStatusIncome();
 
 // Вывод в консоль
 console.log (appData.addExpenses.length);
