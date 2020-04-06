@@ -5,13 +5,12 @@ let isNumber = function(n) {
 let money,
     start = function(){
         do {
-            money = prompt('Ваш месячный доход?');
-        } while (!isNumber(money));
+            money = +prompt('Ваш месячный доход?');
+        } while (!isNumber(money));    
     };
+
 start();
-let expense,
-    count,
-    appData = {
+let appData = {
     income: {},
     addIncome: [],
     expenses: {},
@@ -74,7 +73,8 @@ appData.getStatusIncome();
 console.log (Object.keys(appData).length);
 console.log('Ваши расходы за месяц: ' + appData.expensesMonth);
 console.log('Цель будет достигнута за:' + Math.ceil(appData.getTargetMonth()));
-console.log('Ваш уровень дохода: ' + Math.ceil(appData.getStatusIncome));
+console.log('Ваш уровень дохода: ' + appData.getStatusIncome());
+
 for(let key in appData) {
-    console.log("Наша программа включает в себя данные: " + key);
-}
+    console.log("Наша программа включает в себя данные: " + key)
+    ;}
