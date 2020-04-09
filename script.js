@@ -4,27 +4,24 @@ let count = document.getElementById('start'),
     plus1 = document.getElementsByTagName('button')[0],
     plus2 = document.getElementsByTagName('button')[1],
     checkBox = document.querySelector('.deposit-checkmark'),
-    incomeItem1 = document.querySelectorAll('.additional_income-item')[0],
-    incomeItem2 = document.querySelectorAll('.additional_income-item')[1],
-    rightInput1 = document.getElementsByClassName('budget_month-value')[0],  // Есть ли способ писать [0-6], например?
-    rightInput2 = document.getElementsByClassName('budget_day-value')[1],
-    rightInput3 = document.getElementsByClassName('expenses_month-value')[2],
-    rightInput4 = document.getElementsByClassName('additional_income-value')[3],
-    rightInput5 = document.getElementsByClassName('additional_expenses-value')[4],
-    rightInput6 = document.getElementsByClassName('income_period-value')[5],
-    rightInput7 = document.getElementsByClassName('target_month-value')[6],
-    leftInput1 = document.querySelector('.salary-amount'),
-    leftInput2 = document.querySelector('.income-title'),
-    leftInput3 = document.querySelector('.income-amount'),
-    leftInput4 = document.querySelector('.additional_income-item'),
-    leftInput5 = document.querySelector('.additional_income-item'),
-    leftInput6 = document.querySelector('.expenses-title'),
-    leftInput7 = document.querySelector('.expenses-amount'),
-    leftInput8 = document.querySelector('.additional_expenses-item'),
-    leftInput9 = document.querySelector('.target-amount'),
-    leftInput10 = document.querySelector('.period-select');
-    
-console.log(rightInput1,leftInput1);
+    incomeItemAll = document.querySelectorAll('.additional_income-item'),
+    incomeItem1 = incomeItemAll[0],
+    incomeItem2 = incomeItemAll[1],
+    budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],  // Есть ли способ писать [0-6], например?
+    budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
+    expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],
+    additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0],
+    additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0],
+    incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
+    targetMonthValue = document.getElementsByClassName('target_month-value')[0],
+    salaryAmount = document.querySelector('.salary-amount'),
+    incomeTitle = document.querySelector('.income-title'),
+    incomeMmount = document.querySelector('.income-amount'),
+    expensesTitle = document.querySelector('.expenses-title'),
+    expensesAmount = document.querySelector('.expenses-amount'),
+    additionalExpensesItem = document.querySelector('.additional_expenses-item'),
+    targetAmount = document.querySelector('.target-amount'),
+    periodSelect = document.querySelector('.period-select');
 // let isNumber = function(n) {
 //     return !isNaN(parseFloat(n)) && isFinite(n);
 // };
