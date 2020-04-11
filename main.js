@@ -21,7 +21,7 @@ book[5].after(book[2]);
 book[4].after(book[3]);
 
 // Изменить название книги 3.
- book[4].innerHTML = '<h2><a>Книга 3. this и Прототипы Объектов</a></h2>';
+ book[4].querySelector('a').innerHTML = 'Книга 3. this и Прототипы Объектов';
 
 // Изменение порядка глав.
 // 2
