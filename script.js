@@ -41,9 +41,8 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     start: function(){
-        if(salaryAmount.value === '') {
-            document.getElementById("start").disabled = true;
-            return false;
+        if(salaryAmount.value.trim() === '') {
+            return;
         }
         
        periodSelect.addEventListener('change', function(){
