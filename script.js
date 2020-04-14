@@ -20,13 +20,22 @@ let incomePlus = document.getElementsByTagName('button')[0],
     additionalExpensesItem = document.querySelector('.additional_expenses-item'),
     targetAmount = document.querySelector('.target-amount'),
     periodSelect = document.querySelector('.period-select'),
-    start = document.getElementById('start'),
+    startBtn = document.getElementById('start'),   // Это кнопка рассчитать
+    cancelBtn = document.getElementById('cancel'), // Кнопка "сбросить"
     incomeItems = document.querySelectorAll('.income-items'),
     titlePeriodAmount = document.querySelector('.period-amount'),
     resultIncomePeriod = document.querySelector('.result-income_period');
 let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
+function blockInputText() {
+    let inputText = document.querySelectorAll('input[type="text"]');
+    inputText.forEach(element => {
+      element.disabled = true;
+    });
+    startBtn.style.display = 'none';
+    cancelBtn.style.display = 'block';
+}
 let appData = {
     income: {},
     incomeMonth:0 ,
@@ -42,10 +51,10 @@ let appData = {
     expensesMonth: 0,
     start: function(){
         if(salaryAmount.value.trim() === '') {
-            start.disabled = true;
+            startBtn.disabled = true;
             return;
         }
-        periodSelect.addEventListener('change', function(){
+        periodSelect.addEventListener('input', function(){
            incomePeriodValue.value = appData.calcPeriod();
        });
         
@@ -61,6 +70,7 @@ let appData = {
         this.range();
         
         this.showResult();
+        blockInputText();
     },
     showResult: function() {
         budgetMonthValue.value = this.budgetMonth;
@@ -166,15 +176,37 @@ let appData = {
         let number=document.querySelector('.period-amount');
         number.textContent=rangeLine;
     },
-    reset: function() {
-        console.log('Работает');
-        let allInput = document.querySelectorAll('input[type=text]');
+    reset: function() {  // Метод reset, задание 12
+        let inputAll = document.querySelectorAll('input[type="text"]'); 
+        this.income = {};
+        this.incomeMonth = 0;
+        this.addIncome = [];
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = false;
+        this.percentDeposit = 0;
+        this.moneyDeposit = 0;
+        this.budget = 0;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.expensesMonth = 0;
+        startBtn.style.display = 'block';
+        cancelBtn.style.display = 'none';
     }        
 };
-start.addEventListener('click', appData.start.bind(appData));
+startBtn.addEventListener('click', appData.start.bind(appData));
+cancelBtn.addEventListener('click', appData.reset.bind(appData));
 expensesPlus.addEventListener('click', appData.addExpensesBlock.bind(appData));
 incomePlus.addEventListener('click', appData.addIncomeBlock.bind(appData)); 
 periodSelect.addEventListener('input', appData.range.bind(appData));
+salaryAmount.addEventListener('input', function() {
+    if(salaryAmount.value !== '') {
+        startBtn.disabled = false;
+    } else {
+        startBtn.disabled = true;
+    }
+});
+
 
 appData.addExpenses = appData.addExpenses.map(
     (item) =>
