@@ -177,7 +177,7 @@ let appData = {
         number.textContent=rangeLine;
     },
     reset: function() {  // Метод reset, задание 12
-        let inputAll = document.querySelectorAll('input[type="text"]'); 
+        let inputAll = document.querySelectorAll('input[type="text"'); 
         this.income = {};
         this.incomeMonth = 0;
         this.addIncome = [];
@@ -190,6 +190,10 @@ let appData = {
         this.budgetDay = 0;
         this.budgetMonth = 0;
         this.expensesMonth = 0;
+        inputAll.forEach(element => {
+            element.disabled = false;
+            element.value = '';
+          });
         startBtn.style.display = 'block';
         cancelBtn.style.display = 'none';
     }        
