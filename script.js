@@ -4,8 +4,6 @@ let incomePlus = document.getElementsByTagName('button')[0],
     expensesPlus = document.getElementsByTagName('button')[1],
     checkBox = document.querySelector('.deposit-checkmark'),
     additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
-    incomeItem1 = additionalIncomeItem[0],
-    incomeItem2 = additionalIncomeItem[1],
     budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],
     budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
     expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],
@@ -31,6 +29,11 @@ let isNumber = function(n) {
 function blockInputText() {
     let inputText = document.querySelectorAll('input[type="text"]');
     inputText.forEach(element => {
+      element.disabled = true;
+    });
+    let buttonS = document.querySelectorAll('.btn_plus');
+    console.log(buttonS);
+    buttonS.forEach(element => {
       element.disabled = true;
     });
     startBtn.style.display = 'none';
@@ -194,6 +197,11 @@ let appData = {
             element.disabled = false;
             element.value = '';
           });
+        let buttonS = document.querySelectorAll('.btn_plus');
+        buttonS.forEach(element => {
+            element.disabled = false;
+            element.value = '';
+        });
         startBtn.style.display = 'block';
         cancelBtn.style.display = 'none';
     }        
