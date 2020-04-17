@@ -10,34 +10,27 @@ class DomElement {
         this.fontSize = fontSize;
     }
     randomMethod() {
+        let newEl;
         if(this.selector[0] === '.') {
-            let newEl = document.createElement('div');
-            newEl.className = ('newEl');
-            newEl.style.cssText=`
-            height: ${this.height}px;
-            background: ${this.bg};
-            width: ${this.width}px;
-            font-size: ${this.fontSize}px;
-        `;
-        newEl.textContent = 'ZombieOne';
-        body.append(newEl);
+            newEl = document.createElement('div');
+            newEl.className = ('divblock');
         } else if(this.selector[0] === '#') {
-           let newElboyz = document.createElement('p');
-            newElboyz.id = ('newElboyz');
-            newElboyz.style.cssText=`
+            newEl = document.createElement('p');
+            newEl.id = ('justp');
+        } 
+        newEl.style.cssText=`
             height: ${this.height}px;
             background: ${this.bg};
             width: ${this.width}px;
             font-size: ${this.fontSize}px;
         `;
-        newElboyz.textContent = 'ZombieTwo';
-        body.append(newElboyz);
-        }  
+        newEl.textContent = 'Zombie';
+        body.append(newEl);
     }
 }
-let newDomElement = new DomElement('.star', 50, 50, 'grey', 20 );
-newDomElement.randomMethod();
-console.log(newDomElement);
-let newDomElementBoyz = new DomElement('#sun', 50, 50, 'yellow', 20 );
-newDomElementBoyz.randomMethod();
-console.log(newDomElementBoyz);
+let newEl = new DomElement('.star', 50, 50, 'grey', 20 );
+newEl.randomMethod();
+console.log(newEl);
+let newEl2= new DomElement('#sun', 50, 50, 'yellow', 20 );
+newEl2.randomMethod();
+console.log(newEl2);
