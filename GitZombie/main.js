@@ -12,7 +12,7 @@ class DomElement {
     randomMethod() {
         if(this.selector[0] === '.') {
             let newEl = document.createElement('div');
-            newEl.classList.add('newDiv');
+            newEl.className = ('newEl');
             newEl.style.cssText=`
             height: ${this.height}px;
             background: ${this.bg};
@@ -23,7 +23,7 @@ class DomElement {
         body.append(newEl);
         } else if(this.selector[0] === '#') {
            let newElboyz = document.createElement('p');
-            newElboyz.classList.add('newId');
+            newElboyz.id = ('newElboyz');
             newElboyz.style.cssText=`
             height: ${this.height}px;
             background: ${this.bg};
