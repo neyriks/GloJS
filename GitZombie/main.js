@@ -1,22 +1,21 @@
 'use strict';
 
 let body = document.querySelector('body');
-class DomElement {
-    constructor(selector, height, width, bg, fontSize) {
+function DomElement(selector, height, width, bg, fontSize) {
         this.selector = selector;
         this.height = height;
         this.width = width;
         this.bg = bg;
         this.fontSize = fontSize;
-    }
-    randomMethod() {
+}
+DomElement.prototype.randomMethod = function() {
         let newEl;
         if(this.selector[0] === '.') {
             newEl = document.createElement('div');
-            newEl.className = ('divblock');
+            newEl.className = (this.selector.split('.')[1]);
         } else if(this.selector[0] === '#') {
             newEl = document.createElement('p');
-            newEl.id = ('justp');
+            newEl.id = (this.selector.split('#')[1]);
         } 
         newEl.style.cssText=`
             height: ${this.height}px;
@@ -26,11 +25,8 @@ class DomElement {
         `;
         newEl.textContent = 'Zombie';
         body.append(newEl);
-    }
-}
+};
 let newEl = new DomElement('.star', 50, 50, 'grey', 20 );
 newEl.randomMethod();
-console.log(newEl);
 let newEl2= new DomElement('#sun', 50, 50, 'yellow', 20 );
 newEl2.randomMethod();
-console.log(newEl2);
