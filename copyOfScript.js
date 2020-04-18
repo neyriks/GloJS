@@ -23,7 +23,7 @@ let incomePlus = document.getElementsByTagName('button')[0],
     incomeItems = document.querySelectorAll('.income-items'),
     titlePeriodAmount = document.querySelector('.period-amount'),
     resultIncomePeriod = document.querySelector('.result-income_period');
-let isNumber = function(n) {
+const isNumber = (n) => {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 function blockInputText() {
