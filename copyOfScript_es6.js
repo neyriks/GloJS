@@ -32,7 +32,6 @@ function blockInputText() {
       element.disabled = true;
     });
     let buttonS = document.querySelectorAll('.btn_plus');
-    console.log(buttonS);
     buttonS.forEach(element => {
       element.disabled = true;
     });
@@ -59,15 +58,18 @@ class AppData {
     check () {
         if(salaryAmount.value.trim() !== '') {
             startBtn.removeAttribute('disabled');
-        }
+        } 
     }
-
 
     start(){
         let _this = this;
         periodSelect.addEventListener('input', () => {
         incomePeriodValue.value = _this.calcPeriod();
-    });
+    }); 
+        if (salaryAmount.value === '') {
+            startBtn.disabled = true;
+                return;
+        }
         
         this.budget = +salaryAmount.value;
         this.getExpenses();
@@ -119,6 +121,7 @@ class AppData {
             }
         });
     }
+    
     getIncome () {
         let _this = this;
         incomeItems.forEach(item => {
@@ -141,6 +144,10 @@ class AppData {
                 _this.addExpenses.push(item);
             }
         });
+        this.addExpenses = this.addExpenses.map(
+            (item) =>
+            item.trim().charAt(0).toUpperCase() + item.trim().substr(1).toLowerCase()
+            );
     }
     getAddIncome () {
         let _this = this;
@@ -216,6 +223,21 @@ class AppData {
         });
         startBtn.style.display = 'block';
         cancelBtn.style.display = 'none';
+        incomeItems = document.querySelectorAll('.income-items');
+        expensesItems = document.querySelectorAll('.expenses-items');
+        incomeItems.forEach((element, i) => {  
+            if (i !== 0) {
+              element.remove();
+            }
+        });
+        expensesItems.forEach((element, i) => {  
+            if (i !== 0) {
+              element.remove();
+            }
+        });
+        expensesPlus.style.display = 'block';
+        incomePlus.style.display = 'block';
+
     }
     eventListeners () {
         startBtn.addEventListener('click', this.start.bind(this));
@@ -234,11 +256,10 @@ class AppData {
     }
 }
 const appData = new AppData();
-console.log(appData.eventListeners());
 appData.eventListeners();
-appData.addExpenses = appData.addExpenses.map(
-    (item) =>
-    item.trim().charAt(0).toUpperCase() + item.trim().substr(1).toLowerCase()
-);
+// appData.addExpenses = appData.addExpenses.map(
+//     (item) =>
+//     item.trim().charAt(0).toUpperCase() + item.trim().substr(1).toLowerCase()
+// );
 
 
