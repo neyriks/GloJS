@@ -22,7 +22,12 @@ const incomePlus = document.getElementsByTagName('button')[0],
     cancelBtn = document.getElementById('cancel'); // Кнопка "сбросить"
     let incomeItems = document.querySelectorAll('.income-items');
     const titlePeriodAmount = document.querySelector('.period-amount'),
-    resultIncomePeriod = document.querySelector('.result-income_period');
+    resultIncomePeriod = document.querySelector('.result-income_period'),
+    depositСheck = document.getElementById('deposit-check'),
+    depositBank = document.querySelector('.deposit-bank'),
+    depositAmount = document.querySelector('.deposit-amount'),
+    depositPersent = document.querySelector('.deposit-percent');
+
 const isNumber = (n) => {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
@@ -70,13 +75,16 @@ class AppData {
             startBtn.disabled = true;
                 return;
         }
-        
+        if (Number(depositPersent.value) < 0 || Number(depositPersent.value) > 100 || depositPersent.value !== isNumber) {
+            alert('Введите корректное значение в поле проценты');
+            return;
+        }
         this.budget = +salaryAmount.value;
         this.getExpenses();
         this.getIncome();
         this.getExpensesMonth();
         // appData.getStatusIncome();
-        // appData.getInfoDeposit(); 
+        this.getInfoDeposit(); 
         this.getAddExpenses(); 
         this.getAddIncome();
         this.getBudget();
@@ -164,7 +172,8 @@ class AppData {
     }
     }
     getBudget () {  
-        this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth;
+        const monthDeposit = this.moneyDeposit * (this.percentDeposit / 100);
+        this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + monthDeposit;
         this.budgetDay = this.budgetMonth / 30;
     }
     getTargetMonth () { 
@@ -182,12 +191,9 @@ class AppData {
         }
     }
     getInfoDeposit () {
-        if(this.deposit){
-            this.percentDeposit = prompt('Какой годовой процент?', 10);
-            this.moneyDeposit = prompt('Какая сумма заложена?', 10000);
-        } while(!isNumber(this.percentDeposit || this.moneyDeposit)) {
-            this.percentDeposit = prompt('Какой годовой процент?', 10);
-            this.moneyDeposit = prompt('Какая сумма заложена?', 10000);
+        if(this.deposit) {
+            this.percentDeposit = depositPersent.value;
+            this.moneyDeposit = depositAmount.value;
         }
     }
     calcPeriod () {
@@ -237,7 +243,35 @@ class AppData {
         });
         expensesPlus.style.display = 'block';
         incomePlus.style.display = 'block';
+        depositPersent.style.display = 'none';
 
+    }
+    changePercent () {
+        const valueSelect = this.value;
+        if(valueSelect === 'other') {
+            depositPersent.style.display = 'inline-block';
+        }
+        else {
+            depositPersent.value = valueSelect;
+            depositPersent.style.display = 'none';
+        }
+    }
+    depositHandler () {
+        if(depositСheck.checked) {
+            depositBank.style.display = 'inline-block';
+            depositAmount.style.display = 'inline-block';
+            this.deposit = true;
+            depositBank.addEventListener('change', this.changePercent);
+        } else {
+            depositBank.style.display = 'none';
+            depositAmount.style.display = 'none'; 
+            depositPersent.style.display = 'none';
+            depositBank.value = '';
+            depositAmount.value = '';
+            depositPersent.value = '';
+            this.deposit = false;
+            depositBank.removeEventListener('change', this.changePercent);
+        }
     }
     eventListeners () {
         startBtn.addEventListener('click', this.start.bind(this));
@@ -245,7 +279,7 @@ class AppData {
         expensesPlus.addEventListener('click', this.addExpensesBlock.bind(this));
         incomePlus.addEventListener('click', this.addIncomeBlock.bind(this)); 
         periodSelect.addEventListener('input', this.range.bind(this));
-    
+        depositСheck.addEventListener('change', this.depositHandler.bind(this));
         salaryAmount.addEventListener('input', () => {
         if(salaryAmount.value !== '') {
             startBtn.disabled = false;
