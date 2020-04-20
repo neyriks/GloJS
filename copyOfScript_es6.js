@@ -69,13 +69,13 @@ class AppData {
     start(){
         let _this = this;
         periodSelect.addEventListener('input', () => {
-        incomePeriodValue.value = _this.calcPeriod();
-    }); 
+            incomePeriodValue.value = _this.calcPeriod();
+        }); 
         if (salaryAmount.value === '') {
             startBtn.disabled = true;
                 return;
         }
-        if (Number(depositPersent.value) < 0 || Number(depositPersent.value) > 100 || depositPersent.value !== isNumber) {
+        if (isNumber(depositPersent.value) < 0 || isNumber(depositPersent.value) > 100 || !isNumber(depositPersent.value)) {
             alert('Введите корректное значение в поле проценты');
             return;
         }
@@ -291,9 +291,4 @@ class AppData {
 }
 const appData = new AppData();
 appData.eventListeners();
-// appData.addExpenses = appData.addExpenses.map(
-//     (item) =>
-//     item.trim().charAt(0).toUpperCase() + item.trim().substr(1).toLowerCase()
-// );
-
 
