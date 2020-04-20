@@ -75,7 +75,7 @@ class AppData {
             startBtn.disabled = true;
                 return;
         }
-        if (isNumber(depositPersent.value) < 0 || isNumber(depositPersent.value) > 100 || !isNumber(depositPersent.value)) {
+        if (isNumber(depositPersent.value) < 0 || isNumber(depositPersent.value) > 100 || !isNumber(depositPersent.value) || !isNumber(depositAmount.value)) {
             alert('Введите корректное значение в поле проценты');
             return;
         }
@@ -245,6 +245,8 @@ class AppData {
         incomePlus.style.display = 'block';
         depositPersent.style.display = 'none';
 
+        depositСheck.checked = false;
+        this.depositHandler();
     }
     changePercent () {
         const valueSelect = this.value;
