@@ -81,7 +81,7 @@ class AppData {
             depositPersent.value = '';
             return;
         }
-        if(isNaN(depositPersent.value)) {
+        if(isNaN(depositPersent.value || depositAmount.value)) {
             alert('Введи число');
             return;
         }
